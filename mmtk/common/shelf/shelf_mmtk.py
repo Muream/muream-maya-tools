@@ -58,6 +58,12 @@ class ShelfMMTK(AbstractShelf):
         else:
             logger.warning("Could not find MOP, the buttons using it were not added")
 
+        self.add_button(
+            "attach",
+            command="import ptvsd; ptvsd.enable_attach(address=('localhost', 3000), redirect_output=True); ptvsd.wait_for_attach()",
+            icon="mite.svg"
+        )
+
 
 if __name__ == "__main__":
     ShelfMMTK(name="MMTK", icon_path="C:/Users/muream/projects/muream-maya-toolkit/mmtk/common/shelf/icons/")
