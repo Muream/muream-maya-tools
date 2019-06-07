@@ -7,7 +7,7 @@ import maya.cmds as cmds
 
 from ngSkinTools.importExport import JsonImporter
 
-from mmtk.utils import get_scene_dir
+from mmtk.common.path import get_scene_dir
 
 
 logger = logging.getLogger(__name__)

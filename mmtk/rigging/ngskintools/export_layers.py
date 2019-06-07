@@ -6,7 +6,8 @@ import maya.cmds as cmds
 from ngSkinTools.mllInterface import MllInterface
 from ngSkinTools.importExport import JsonExporter, LayerData, InfluenceInfo
 
-from mmtk.utils import get_shape_type, get_scene_dir
+from mmtk.common.dag import get_shape_type
+from mmtk.common.path import get_scene_dir
 
 
 logger = logging.getLogger(__name__)
