@@ -1,0 +1,30 @@
+(dp1
+S'info'
+p2
+VMirror the controller shapes from the left side to the right side.
+p3
+sS'name'
+p4
+VMirror Controller Shapes
+p5
+sS'tags'
+p6
+VShapeShifter
+p7
+sS'syntax'
+p8
+S'python'
+p9
+sS'command'
+p10
+Vfrom mmtk.rigging.shapeshifter import mirror_shape_left_to_right; mirror_shape_left_to_right()
+p11
+sS'id'
+p12
+S'376d01d699c060'
+p13
+sS'icon'
+p14
+Vflip.svg
+p15
+s.

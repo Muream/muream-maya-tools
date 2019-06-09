@@ -3,6 +3,8 @@ import os
 import sys
 
 import maya.cmds as cmds
+from maya.utils import executeDeferred
+from .default import init_defaults
 
 
 logger = logging.getLogger(__name__)
@@ -14,8 +16,10 @@ def setup():
     sys.path.append(vendor_dir)
     
     # create the shelf
-    shelf_icon_path = os.path.join(os.path.dirname(__file__), 'common', 'shelf', 'icons')
-    cmds.evalDeferred("import mmtk.common.shelf as shelf; shelf.ShelfMMTK('MMTK', icon_path='{}/')".format(shelf_icon_path))
+    # shelf_icon_path = os.path.join(os.path.dirname(__file__), 'common', 'shelf', 'icons')
+    # cmds.evalDeferred("import mmtk.common.shelf as shelf; shelf.ShelfMMTK('MMTK', icon_path='{}/')".format(shelf_icon_path))
+
+    executeDeferred(init_defaults)
 
     logger.info("Setup for Muream Maya Toolkit done.")
 

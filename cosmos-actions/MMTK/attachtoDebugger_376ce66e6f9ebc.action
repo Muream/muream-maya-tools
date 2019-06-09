@@ -1,0 +1,29 @@
+(dp1
+S'info'
+p2
+VAttach to vscode debugger
+p3
+sS'name'
+p4
+VAttach to Debugger
+p5
+sS'tags'
+p6
+V
+sS'syntax'
+p7
+S'python'
+p8
+sS'command'
+p9
+Vimport ptvsd\u000aptvsd.enable_attach(address=('localhost', 3000), redirect_output=True)\u000aptvsd.wait_for_attach()
+p10
+sS'id'
+p11
+S'376ce66e6f9ebc'
+p12
+sS'icon'
+p13
+Vmite.svg
+p14
+s.
