@@ -1,0 +1,69 @@
+//Maya Preference 2019 (Release 1)
+//
+//
+
+//
+// The runtime commands referenced by the hotkeys
+//
+runTimeCommand
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("charcoalEditor2;")
+	CharcoalEditor2;
+
+//
+// The name commands referenced by the hotkeys
+//
+nameCommand
+	-annotation "SelectToggleModeNameCommand"
+	-sourceType "mel"
+	-command ("SelectToggleMode")
+	SelectToggleModeNameCommand;
+
+nameCommand
+	-annotation "Charcoal2NameCommand"
+	-sourceType "mel"
+	-command ("CharcoalEditor2")
+	Charcoal2NameCommand;
+
+nameCommand
+	-annotation "NodeEditorWindowNameCommand"
+	-sourceType "mel"
+	-command ("NodeEditorWindow")
+	NodeEditorWindowNameCommand;
+
+//
+// The user hotkeys
+//
+//
+// The hotkey set
+//
+hotkeySet -source "Maya_Default" -current Muream_Hotkeys;
+//
+// The hotkey contexts and hotkeys
+//
+hotkey -keyShortcut "F8" -name ("");
+hotkey -keyShortcut "," -name ("Charcoal2NameCommand");
+hotkey -keyShortcut "n" -releaseName ("");
+hotkey -keyShortcut "n" -name ("NodeEditorWindowNameCommand");
+hotkey -keyShortcut "a" -name ("SelectToggleModeNameCommand");
+hotkey -keyShortcut "a" -releaseName ("");
+hotkeyCtx -type "Editor" -addClient "shapePanel";
+hotkeyCtx -type "Editor" -addClient "profilerPanel";
+hotkeyCtx -type "Editor" -addClient "hyperGraphPanel";
+hotkeyCtx -type "Editor" -addClient "graphEditor";
+hotkeyCtx -type "Editor" -addClient "posePanel";
+hotkeyCtx -type "Editor" -addClient "timeEditorPanel";
+hotkeyCtx -type "Editor" -addClient "hyperShadePanel";
+hotkeyCtx -type "Editor" -addClient "nodeEditorPanel";
+hotkeyCtx -type "Editor" -addClient "outlinerPanel";
+hotkeyCtx -type "Editor" -addClient "polyTexturePlacementPanel";
+hotkeyCtx -type "Tool" -addClient "texCutContext";
+hotkeyCtx -type "Tool" -addClient "Unfold3DBrush";
+hotkeyCtx -type "Tool" -addClient "SymmetrizeUVBrush";
+hotkeyCtx -type "Tool" -addClient "polyCutUV";
+hotkeyCtx -type "Tool" -addClient "texSculptCacheContext";
+hotkeyCtx -type "Tool" -addClient "xgmIGBrush";
+hotkeyCtx -type "Tool" -addClient "sculptMeshCache";
