@@ -16,7 +16,7 @@ except:
 
 try:
     home_dir = os.path.expanduser("~")
-    mmtk_dir = os.path.join(home_dir, "projects", "muream-maya-toolkit")
+    mmtk_dir = os.path.join(home_dir, "projects", "maya", "muream-maya-toolkit")
     sys.path.append(mmtk_dir)
     import mmtk
 
