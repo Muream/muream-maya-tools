@@ -2,11 +2,11 @@
 
 import maya.cmds as cmds
 import abc
+import os
 
 
 def _null(*args):
     pass
-
 
 
 class AbstractShelf(object):
@@ -15,6 +15,7 @@ class AbstractShelf(object):
     it should be extended by the derived class to build the necessary shelf elements.
     By default it creates an empty shelf called "customShelf".
     """
+
     __metaclass__ = abc.ABCMeta
 
     def __init__(self, name="customShelf", icon_path=""):
@@ -22,8 +23,8 @@ class AbstractShelf(object):
 
         self.icon_path = icon_path
 
-        self.labelBackground = (0, 0, 0, .5)
-        self.labelColour = (.9, .9, .9)
+        self.labelBackground = (0, 0, 0, 0.5)
+        self.labelColour = (0.9, 0.9, 0.9)
 
         self._clean_old_shelf()
         cmds.setParent(self.name)
@@ -36,11 +37,13 @@ class AbstractShelf(object):
         elements. Otherwise, nothing is added to the shelf.
         """
 
-    def add_button(self, label, icon="commandButton.png", command=_null, doubleCommand=_null):
+    def add_button(
+        self, label, icon="commandButton.png", command=_null, doubleCommand=_null
+    ):
         """Add a shelf button with the specified label, command, double click command and image."""
         cmds.setParent(self.name)
         if icon:
-            icon = self.icon_path + icon
+            icon = os.path.join(self.icon_path, icon)
         cmds.shelfButton(
             width=64,
             height=32,
@@ -56,13 +59,13 @@ class AbstractShelf(object):
     def add_menu_item(self, parent, label, command=_null, icon=""):
         """Adds a shelf button with the specified label, command, double click command and image."""
         if icon:
-            icon = self.icon_path + icon
+            icon = os.path.join(self.icon_path, icon)
         return cmds.menuItem(p=parent, l=label, c=command, i="")
 
     def add_sub_menu(self, parent, label, icon=None):
         """Adds a sub menu item with the specified label and icon to the specified parent popup menu."""
         if icon:
-            icon = self.icon_path + icon
+            icon = os.path.join(self.icon_path, icon)
         return cmds.menuItem(p=parent, l=label, i=icon, subMenu=1)
 
     def _clean_old_shelf(self):
