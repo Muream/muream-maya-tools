@@ -2,6 +2,7 @@ import os
 import sys
 import logging
 from maya import utils
+import site
 
 
 logger = logging.getLogger(__name__)
@@ -17,7 +18,7 @@ except:
 try:
     home_dir = os.path.expanduser("~")
     mmtk_dir = os.path.join(home_dir, "projects", "maya", "muream-maya-toolkit")
-    sys.path.append(mmtk_dir)
+    site.addsitedir(mmtk_dir)
     import mmtk
 
     mmtk.setup()
