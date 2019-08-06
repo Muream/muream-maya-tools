@@ -1,4 +1,4 @@
-from shapeshifter import shapeshifter
+from mop.vendor.shapeshifter import shapeshifter
 import maya.api.OpenMaya as om2
 import maya.cmds as cmds
 
