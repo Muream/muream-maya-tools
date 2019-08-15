@@ -1,7 +1,6 @@
 import os
 import sys
 import logging
-from maya import utils
 import site
 
 
@@ -24,10 +23,3 @@ try:
     mmtk.setup()
 except:
     logger.error("Couldn't load Muream Maya Toolkit")
-
-try:
-    import mop.ui.menu
-
-    utils.executeDeferred(mop.ui.menu.build_menu)
-except:
-    logger.error("Couldn't load Master Of Puppets")
