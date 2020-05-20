@@ -59,7 +59,7 @@ class ShelfMMTK(AbstractShelf):
 
         self.add_button(
             "attach",
-            command="import ptvsd; ptvsd.enable_attach(address=('localhost', 5678), redirect_output=True); ptvsd.wait_for_attach()",
+            command="import ptvsd; ptvsd.enable_attach(address=('localhost', 3000), redirect_output=True); ptvsd.wait_for_attach()",
             icon="mite.svg"
         )
 
