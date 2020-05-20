@@ -13,7 +13,6 @@ try:
 except:
     logger.error("Couldn't load Cosmos")
 
-
 try:
     home_dir = os.path.expanduser("~")
     mmtk_dir = os.path.join(home_dir, "projects", "maya", "muream-maya-toolkit")
