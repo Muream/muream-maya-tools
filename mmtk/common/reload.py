@@ -15,14 +15,14 @@ def reload_mmtk():
     mop_modules = []
     for module in sys.modules:
         for term in search:
-            if term in module and not 'reload' in module:
+            if term in module and not "reload" in module:
                 mop_modules.append(module)
                 break
 
     for module in mop_modules:
-        del(sys.modules[module])
+        del sys.modules[module]
 
-    logger.info('Reloaded mmtk modules.')
+    logger.info("Reloaded mmtk modules.")
 
 
 if __name__ == "__main__":

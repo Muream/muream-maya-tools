@@ -23,7 +23,7 @@ def import_layers(path=None):
     :type path: str
     """
     if path is None:
-        path = os.path.join(get_scene_dir(), 'skin_data')
+        path = os.path.join(get_scene_dir(), "skin_data")
 
     if not os.path.exists(path):
         raise ValueError("Provided path {} does not exist.".format(path))
@@ -31,7 +31,7 @@ def import_layers(path=None):
     # initiate stuff before looping over the meshes
     importer = JsonImporter()
 
-    for f in glob.iglob(os.path.join(path, '*.json')):
+    for f in glob.iglob(os.path.join(path, "*.json")):
         # get the mesh name from the absolute path of the file.
         mesh_name = os.path.splitext(os.path.basename(f))[0]
 
@@ -46,7 +46,6 @@ def import_layers(path=None):
         data = importer.process(json)
         data.saveTo(mesh_name)
         logger.info("Imported Skinning data on {}".format(mesh_name))
-
 
 
 if __name__ == "__main__":

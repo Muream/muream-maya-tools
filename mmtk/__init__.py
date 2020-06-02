@@ -23,7 +23,7 @@ def setup():
 
 def add_vendors_to_path():
     vendor_dir = os.path.abspath(
-        os.path.join(os.path.dirname(__file__), '..', 'vendor')
+        os.path.join(os.path.dirname(__file__), "..", "vendor")
     )
 
     site.addsitedir(vendor_dir)
@@ -36,7 +36,7 @@ def add_cosmos_action_path():
         pass
     else:
         cosmos_actions_path = os.path.abspath(
-            os.path.join(os.path.dirname(__file__), '..', 'cosmos-actions')
+            os.path.join(os.path.dirname(__file__), "..", "cosmos-actions")
         )
         path_string = cosmos.prefs.getGenericSettings("scriptPath")
         path_string += ";" + cosmos_actions_path
@@ -45,8 +45,9 @@ def add_cosmos_action_path():
 
 def create_mmtk_shelf():
     shelf_icon_path = os.path.abspath(
-        os.path.join(os.path.dirname(__file__), '..', 'icons')
+        os.path.join(os.path.dirname(__file__), "..", "icons")
     )
+    shelf.ShelfMMTK("MMTK", icon_path=shelf_icon_path)
 
 
 def load_bifrost():

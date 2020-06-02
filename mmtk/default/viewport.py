@@ -15,7 +15,7 @@ def init_grid():
         displayOrthographicLabels=True,
         displayPerspectiveLabels=False,
         size=100,
-        spacing=10, 
+        spacing=10,
     )
     cmds.displayColor("gridAxis", 15)  # Axes color
     cmds.displayColor("gridHighlight", 1)  # Grid lines & numbers color
