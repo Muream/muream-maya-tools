@@ -1,0 +1,28 @@
+{
+    "AminoConfigurations": [
+        {
+            "libraryName": "Muream Bifrost Nodes",
+            "libraryVersion": "1.0.0",
+            "jsonLibs": [
+                {
+                    "path": "compounds",
+                    "files": [
+                        "aim_at.json",
+                        "compute_face_offset.json",
+                        "compute_face_vertex.json",
+                        "construct_mesh_from_nested_faces.json",
+                        "draw_angle_cone.json",
+                        "draw_vector.json",
+                        "primitive_arrow.json",
+                        "primitive_cone.json",
+                        "primitive_cube.json",
+                        "primitive_cylinder.json",
+                        "primitive_plane.json",
+                        "transform_mesh.json",
+                        "transform_points.json"
+                    ]
+                }
+            ]
+        }
+    ]
+}

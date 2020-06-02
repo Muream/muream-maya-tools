@@ -16,6 +16,7 @@ def setup():
     add_cosmos_action_path()
     executeDeferred(create_mmtk_shelf)
     executeDeferred(init_defaults)
+    load_bifrost()
 
     logger.info("Setup for Muream Maya Toolkit done.")
 
@@ -46,4 +47,8 @@ def create_mmtk_shelf():
     shelf_icon_path = os.path.abspath(
         os.path.join(os.path.dirname(__file__), '..', 'icons')
     )
-    shelf.ShelfMMTK('MMTK', icon_path=shelf_icon_path)
+
+
+def load_bifrost():
+    config_path = os.path.join(os.path.dirname(__file__), "bifrost", "config.json")
+    os.environ["BIFROST_LIB_CONFIG_FILES"] += ";" + config_path
