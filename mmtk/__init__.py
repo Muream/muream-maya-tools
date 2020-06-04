@@ -39,8 +39,10 @@ def add_cosmos_action_path():
             os.path.join(os.path.dirname(__file__), "..", "cosmos-actions")
         )
         path_string = cosmos.prefs.getGenericSettings("scriptPath")
-        path_string += ";" + cosmos_actions_path
-        cosmos.prefs.writegenericSettings("scriptPath", path_string)
+
+        if not cosmos_actions_path in path_string:
+            path_string += ";" + cosmos_actions_path
+            cosmos.prefs.writegenericSettings("scriptPath", path_string)
 
 
 def create_mmtk_shelf():
