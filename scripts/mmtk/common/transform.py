@@ -6,7 +6,7 @@ def reset_translation(nodes):
         nodes = [list]
 
     for node in nodes:
-        if not cmds.nodeType(node) == "transform":
+        if not cmds.nodeType(node) in ["transform", "joint"]:
             continue
         for axis in "XYZ":
             attr_name = "{}.{}".format(node, "translate" + axis)
@@ -26,7 +26,7 @@ def reset_rotation(nodes):
         nodes = [list]
 
     for node in nodes:
-        if not cmds.nodeType(node) == "transform":
+        if not cmds.nodeType(node) in ["transform", "joint"]:
             continue
         for axis in "XYZ":
             attr_name = "{}.{}".format(node, "rotate" + axis)
@@ -46,7 +46,7 @@ def reset_scale(nodes):
         nodes = [list]
 
     for node in nodes:
-        if not cmds.nodeType(node) == "transform":
+        if not cmds.nodeType(node) in ["transform", "joint"]:
             continue
         for axis in "XYZ":
             attr_name = "{}.{}".format(node, "scale" + axis)

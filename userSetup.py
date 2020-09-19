@@ -1,2 +1,0 @@
-import mmtk
-mmtk.setup()
