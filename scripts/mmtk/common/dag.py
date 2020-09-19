@@ -1,5 +1,6 @@
 import maya.cmds as cmds
 
+
 def get_shape_type(transform):
     """Get the shape type of the transform node.
 

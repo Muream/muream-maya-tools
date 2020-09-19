@@ -11,5 +11,6 @@ def copy_shape():
     for target in targets:
         shapeshifter.change_controller_shape(target, shape_data)
 
+
 if __name__ == "__main__":
     copy_shape()

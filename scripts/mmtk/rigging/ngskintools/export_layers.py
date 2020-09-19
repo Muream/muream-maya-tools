@@ -24,7 +24,7 @@ def export_layers(path=None):
     """
 
     if path is None:
-        path = os.path.join(get_scene_dir(), 'skin_data')
+        path = os.path.join(get_scene_dir(), "skin_data")
 
     if not os.path.exists(path):
         os.makedirs(path)
@@ -45,7 +45,7 @@ def export_layers(path=None):
             logger.warning("{} Skipping".format(e))
             continue
 
-        if shape_type != 'mesh':
+        if shape_type != "mesh":
             logger.warning("{} is not a mesh. Skipping".format(mesh))
             continue
 
@@ -65,7 +65,7 @@ def export_layers(path=None):
             continue
 
         json = exporter.process(data)
-        file_path = os.path.join(path, mesh + '.json')
+        file_path = os.path.join(path, mesh + ".json")
         with open(file_path, "w") as f:
             f.write(json)
 
