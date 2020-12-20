@@ -1,0 +1,4 @@
+[submodule "modules/shapeshifter"]
+	path = modules/shapeshifter
+	url = git@github.com:HolisticCoders/shapeshifter.git
+	branch = master

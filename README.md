@@ -6,6 +6,8 @@ This is really tailored towards my personal workflow and launching maya with thi
 Feel free to use or take anything from it.
 
 # Installation
-1. Download the repository anywhere.
-2. Copy "MureamMayaToolkit.mod" to a directory that's in your MAYA_MODULE_PATH. On windows something like `Documents/maya/modules/` works just fine.
-3. Edit that module file and change the path to the root folder of the repository.
+1. Clone the repository like so: `git clone --recurse-submodules git://github.com/Muream/muream-maya-toolkit.git`
+2. Add the `modules` folder to your `MAYA_MODULE_PATH`. A good way to do that is to add it in your Maya.env file like so:
+```
+MAYA_MODULE_PATH = path/to/muream-maya-toolkit/modules
+```
