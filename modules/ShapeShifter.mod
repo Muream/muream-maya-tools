@@ -1,2 +1,2 @@
-+ ShapeShifter 1.0.0 ./shapeshifter
-scripts: ./scripts
++ ShapeShifter any ./shapeshifter
+scripts: scripts

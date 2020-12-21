@@ -1,3 +1,3 @@
-+ MureamMayaTools 1.0.0 ../
-scripts: ./scripts
-icons: ./icons
++ MureamMayaTools any ../
+scripts: scripts
+icons: icons
