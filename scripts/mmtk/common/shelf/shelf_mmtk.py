@@ -1,3 +1,4 @@
+import os
 import logging
 import sys
 
@@ -7,16 +8,24 @@ from mmtk.common.shelf import AbstractShelf
 logger = logging.getLogger(__name__)
 
 
+def _get_available_modules():
+    available_modules = []
+    for path in sys.path:
+        if os.path.isdir(path):
+            available_modules.extend(os.listdir(path))
+    return available_modules
+
+
 class ShelfMMTK(AbstractShelf):
     def build(self):
-
+        available_modules = _get_available_modules()
         self.add_button(
             "",
             command="from mmtk.common.reload import reload_mmtk; reload_mmtk()",
             icon="refresh.svg",
         )
 
-        if "ngSkinTools" in sys.modules:
+        if "ngSkinTools" in available_modules:
             self.add_button(
                 "Export Layers",
                 command="from mmtk.rigging.ngskintools import export_layers; export_layers()",
@@ -33,7 +42,7 @@ class ShelfMMTK(AbstractShelf):
                 "Could not find 'ngSkinTools', the buttons using it were not added"
             )
 
-        if "mop.vendor.shapeshifter" in sys.modules:
+        if "shapeshifter" in available_modules:
             self.add_button(
                 "",
                 command="from mmtk.rigging.shapeshifter import mirror_shape_left_to_right; mirror_shape_left_to_right()",
@@ -50,21 +59,14 @@ class ShelfMMTK(AbstractShelf):
                 "Could not find 'shapeshifter', the buttons using it were not added"
             )
 
-        if "mop" in sys.modules:
+        if "ptvsd" in available_modules:
             self.add_button(
-                "Fields",
-                command="from mmtk.rigging.mop import fix_object_list_fields; fix_object_list_fields()",
+                "attach",
+                command="import ptvsd; ptvsd.enable_attach(address=('localhost', 3000), redirect_output=True); ptvsd.wait_for_attach()",
                 icon="mite.svg",
             )
-            logger.info("Added MOP buttons.")
         else:
-            logger.warning("Could not find MOP, the buttons using it were not added")
-
-        self.add_button(
-            "attach",
-            command="import ptvsd; ptvsd.enable_attach(address=('localhost', 3000), redirect_output=True); ptvsd.wait_for_attach()",
-            icon="mite.svg",
-        )
+            logger.warning("could not find ptvsd, the buttons using it were not added")
 
 
 if __name__ == "__main__":

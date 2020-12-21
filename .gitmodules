@@ -2,3 +2,6 @@
 	path = modules/shapeshifter
 	url = git@github.com:HolisticCoders/shapeshifter.git
 	branch = master
+[submodule "modules/muream-bifrost-nodes"]
+	path = modules/muream-bifrost-nodes
+	url = git@github.com:Muream/muream-bifrost-nodes.git
