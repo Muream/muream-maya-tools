@@ -8,15 +8,6 @@ from mmtk.common.shelf import ShelfMMTK
 
 logger = logging.getLogger(__name__)
 
-MMTK_ROOT_DIR = os.path.abspath(
-    os.path.join(
-        os.path.dirname(__file__),
-        "..",
-        "..",
-        "..",
-    )
-)
-
 
 def initialize():
     init()
@@ -40,12 +31,10 @@ def init_cosmos():
     if "cosmos" in sys.modules:
         import cosmos
 
+        current_directory = os.path.dirname(__file__)
+
         cosmos_actions_path = os.path.abspath(
-            os.path.join(
-                MMTK_ROOT_DIR,
-                "cosmos",
-                "actions",
-            )
+            os.path.join(current_directory, "cosmos-actions")
         )
 
         path_string = cosmos.prefs.getGenericSettings("scriptPath")
