@@ -26,7 +26,6 @@ def initialize():
 def init():
     sys.dont_write_bytecode = True
     init_cosmos()  # cosmos can't be imported in a deferred call
-    # init_bifrost()
 
 
 def init_deferred():
@@ -35,17 +34,6 @@ def init_deferred():
     init_viewport()
 
     logger.info("Muream Maya Toolkit initialized.")
-
-
-def init_bifrost():
-    config_path = os.path.join(
-        MMTK_ROOT_DIR,
-        "bifrost",
-        "config.json",
-    )
-    bifrost_lib = os.environ["BIFROST_LIB_CONFIG_FILES"].split(";")
-    bifrost_lib.append(config_path)
-    os.environ["BIFROST_LIB_CONFIG_FILES"] = ";".join(bifrost_lib)
 
 
 def init_cosmos():
