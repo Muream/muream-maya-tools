@@ -5,3 +5,6 @@
 [submodule "modules/muream-bifrost-nodes"]
 	path = modules/muream-bifrost-nodes
 	url = git@github.com:Muream/muream-bifrost-nodes.git
+[submodule "modules/brSmoothWeights"]
+	path = modules/brSmoothWeights
+	url = https://github.com/IngoClemens/brSmoothWeights
