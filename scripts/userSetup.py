@@ -1,4 +1,4 @@
 import cosmos
-import mmtk.default
+import mmt.default
 
-mmtk.default.initialize()
+mmt.default.initialize()

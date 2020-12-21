@@ -1,15 +1,15 @@
 (dp1
 S'info'
 p2
-VReloads MMTK
+VReloads MMT
 p3
 sS'name'
 p4
-VReload MMTK
+VReload MMT
 p5
 sS'tags'
 p6
-VMMTK
+VMMT
 p7
 sS'syntax'
 p8
@@ -17,7 +17,7 @@ S'python'
 p9
 sS'command'
 p10
-Vfrom mmtk.common.reload import reload_mmtk; reload_mmtk()
+Vfrom mmt.common.reload import reload_mmt; reload_mmt()
 p11
 sS'id'
 p12

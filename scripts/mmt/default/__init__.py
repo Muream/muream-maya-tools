@@ -4,7 +4,7 @@ import os
 
 import maya.cmds as cmds
 from maya.utils import executeDeferred
-from mmtk.common.shelf import ShelfMMTK
+from mmt.common.shelf import ShelfMMT
 
 logger = logging.getLogger(__name__)
 
@@ -51,7 +51,7 @@ def init_shelf():
     shelf_icon_path = os.path.abspath(
         os.path.join(os.path.dirname(__file__), "..", "icons")
     )
-    ShelfMMTK("MMTK", icon_path=shelf_icon_path)
+    ShelfMMT("MMT", icon_path=shelf_icon_path)
 
 
 def init_hotkeys():

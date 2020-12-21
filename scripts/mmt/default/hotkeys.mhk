@@ -7,10 +7,10 @@
 //
 runTimeCommand
 	-annotation ""
-	-category "Custom Scripts.mmtk.common.transform"
+	-category "Custom Scripts.mmt.common.transform"
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import mmtk.common.transform as transform\n\ntransform.reset_transformation(cmds.ls(sl=True))")
+	-command ("import mmt.common.transform as transform\n\ntransform.reset_transformation(cmds.ls(sl=True))")
 	reset_transformation;
 
 runTimeCommand
@@ -23,26 +23,26 @@ runTimeCommand
 
 runTimeCommand
 	-annotation ""
-	-category "Custom Scripts.mmtk.common.transform"
+	-category "Custom Scripts.mmt.common.transform"
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import mmtk.common.transform as transform\n\ntransform.reset_translation(cmds.ls(sl=True))")
+	-command ("import mmt.common.transform as transform\n\ntransform.reset_translation(cmds.ls(sl=True))")
 	reset_translation;
 
 runTimeCommand
 	-annotation ""
-	-category "Custom Scripts.mmtk.common.transform"
+	-category "Custom Scripts.mmt.common.transform"
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import mmtk.common.transform as transform\n\ntransform.reset_scale(cmds.ls(sl=True))")
+	-command ("import mmt.common.transform as transform\n\ntransform.reset_scale(cmds.ls(sl=True))")
 	reset_scale;
 
 runTimeCommand
 	-annotation ""
-	-category "Custom Scripts.mmtk.common.transform"
+	-category "Custom Scripts.mmt.common.transform"
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import mmtk.common.transform as transform\n\ntransform.reset_rotation(cmds.ls(sl=True))")
+	-command ("import mmt.common.transform as transform\n\ntransform.reset_rotation(cmds.ls(sl=True))")
 	reset_rotation;
 
 //

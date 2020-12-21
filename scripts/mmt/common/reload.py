@@ -5,13 +5,13 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def reload_mmtk():
-    """Remove all mmtk modules from the Python session.
+def reload_mmt():
+    """Remove all mmt modules from the Python session.
 
-    Use this command to reload the `mmtk` package after
+    Use this command to reload the `mmt` package after
     a change was made.
     """
-    search = ["mmtk"]
+    search = ["mmt"]
     mop_modules = []
     for module in sys.modules:
         for term in search:
@@ -22,8 +22,8 @@ def reload_mmtk():
     for module in mop_modules:
         del sys.modules[module]
 
-    logger.info("Reloaded mmtk modules.")
+    logger.info("Reloaded mmt modules.")
 
 
 if __name__ == "__main__":
-    reload_mmtk()
+    reload_mmt()
