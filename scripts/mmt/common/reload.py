@@ -13,6 +13,7 @@ def reload_mmt():
     """
     search = ["mmt"]
     mop_modules = []
+    search = ["mmt", "shapeshifter"]
     for module in sys.modules:
         for term in search:
             if term in module and not "reload" in module:
