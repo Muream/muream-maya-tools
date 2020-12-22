@@ -8,3 +8,6 @@
 [submodule "modules/brSmoothWeights"]
 	path = modules/brSmoothWeights
 	url = https://github.com/IngoClemens/brSmoothWeights
+[submodule "modules/rampWeights"]
+	path = modules/rampWeights
+	url = https://github.com/IngoClemens/rampWeights.git
