@@ -11,16 +11,15 @@ def reload_mmt():
     Use this command to reload the `mmt` package after
     a change was made.
     """
-    search = ["mmt"]
-    mop_modules = []
     search = ["mmt", "shapeshifter"]
+    mmt_modules = []
     for module in sys.modules:
         for term in search:
             if term in module and not "reload" in module:
-                mop_modules.append(module)
+                mmt_modules.append(module)
                 break
 
-    for module in mop_modules:
+    for module in mmt_modules:
         del sys.modules[module]
 
     logger.info("Reloaded mmt modules.")
