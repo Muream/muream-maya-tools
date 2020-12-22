@@ -10,14 +10,14 @@ logger = logging.getLogger(__name__)
 
 
 def initialize():
-    init()
+    init_now()
     executeDeferred(init_deferred)
 
 
-def init():
+def init_now():
     sys.dont_write_bytecode = True
-    init_cosmos()  # cosmos can't be imported in a deferred call
     cmds.commandPort(n="localhost:7001", stp="mel", echoOutput=True)
+    init_cosmos()
 
 
 def init_deferred():
