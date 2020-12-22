@@ -17,6 +17,7 @@ def initialize():
 def init():
     sys.dont_write_bytecode = True
     init_cosmos()  # cosmos can't be imported in a deferred call
+    cmds.commandPort(n="localhost:7001", stp="mel", echoOutput=True)
 
 
 def init_deferred():
