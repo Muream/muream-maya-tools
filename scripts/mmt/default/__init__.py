@@ -25,7 +25,7 @@ def init_deferred():
     # init_shelf()
     init_viewport()
 
-    logger.info("Muream Maya Toolkit initialized.")
+    logger.info("Muream Maya Tools initialized.")
 
 
 def init_cosmos():
@@ -64,7 +64,7 @@ def init_hotkeys():
 
 def init_viewport():
     cmds.grid(
-        divisions=4,
+        divisions=10,
         displayAxes=True,
         displayAxesBold=True,
         displayDivisionLines=True,
@@ -74,9 +74,10 @@ def init_viewport():
         size=100,
         spacing=10,
     )
-    cmds.displayColor("gridAxis", 15)  # Axes color
+    cmds.displayColor("gridAxis", 12)  # Axes color
     cmds.displayColor("gridHighlight", 1)  # Grid lines & numbers color
     cmds.displayColor("grid", 2)  # Subdivision lines color
+    cmds.displayRGBColor("background", 0.168, 0.168, 0.168)
 
     try:
         cmds.setAttr("hardwareRenderingGlobals.multiSampleEnable", 1)
