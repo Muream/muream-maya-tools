@@ -1,4 +1,27 @@
 import maya.cmds as cmds
+from .deformers import get_deformers_by_type
+
+
+def select_binding_joints():
+    mesh = cmds.ls(sl=True)
+    if not mesh:
+        raise RuntimeError("No Mesh selected")
+    mesh = mesh[0]
+
+    joints = get_binding_joints(mesh)
+    cmds.select(joints, replace=True)
+
+
+def get_binding_joints(mesh):
+
+    skin_cluster = get_deformers_by_type(mesh, "skinCluster")
+    if not skin_cluster:
+        raise RuntimeError("Mesh '{}' isn't skinned".format(mesh))
+
+    skin_cluster = skin_cluster[0]
+    joints = cmds.listConnections("{}.matrix".format(skin_cluster))
+
+    return joints
 
 
 def reset_translation(nodes):
