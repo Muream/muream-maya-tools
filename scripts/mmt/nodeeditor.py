@@ -58,7 +58,7 @@ def get_connected_plugs_recursive(node, plug):
         node_type = cmds.nodeType(node_name)
 
         plugs_to_check = [plug_name]
-        plugs_to_check.extend(cmds.affects(plug_name, type=node_type)) or []
+        plugs_to_check.extend(cmds.affects(plug_name, type=node_type) or [])
 
         for plug_to_check in plugs_to_check:
             all_plugs = all_plugs | get_connected_plugs_recursive(
