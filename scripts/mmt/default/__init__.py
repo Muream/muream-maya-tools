@@ -65,10 +65,9 @@ def init_viewport():
         size=100,
         spacing=10,
     )
-    cmds.displayColor("gridAxis", 12)  # Axes color
+    cmds.displayColor("gridAxis", 15)  # Axes color
     cmds.displayColor("gridHighlight", 1)  # Grid lines & numbers color
     cmds.displayColor("grid", 2)  # Subdivision lines color
-    cmds.displayRGBColor("background", 0.168, 0.168, 0.168)
 
     try:
         cmds.setAttr("hardwareRenderingGlobals.multiSampleEnable", 1)
