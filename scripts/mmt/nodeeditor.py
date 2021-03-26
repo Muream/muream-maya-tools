@@ -2,7 +2,7 @@ import maya.mel as mel
 import maya.cmds as cmds
 
 
-def graph_hovered_attribute():
+def graph_hovered_attribute(source, destination):
     """
     Adds outgoing connections for a specific attribute (under the cursor) to the Node Editor.
     1. Gets the plug that the cursor is hovering over
@@ -22,7 +22,7 @@ def graph_hovered_attribute():
         plug_under_cursor = cmds.nodeEditor(node_editor, feedbackPlug=True, query=True)
 
         node, plug = plug_under_cursor.split(".")
-        nodes = get_affected_nodes(node, plug)
+        nodes = get_connected_nodes(node, plug, source, destination)
         if nodes:
             graph_nodes(nodes)
         else:
@@ -38,40 +38,43 @@ def graph_nodes(nodes):
     cmds.nodeEditor(node_editor, addNode=nodes, layout=False, edit=True)
 
 
-def get_connected_plugs(node, plug):
-    out_connections = set(
+def get_connected_plugs(node, plug, source, destination):
+    connections = set(
         cmds.listConnections(
-            ".".join([node, plug]), source=False, destination=True, plugs=True
+            ".".join([node, plug]), source=source, destination=destination, plugs=True
         )
         or []
     )
-    return out_connections
+    return connections
 
 
-def get_connected_plugs_recursive(node, plug):
+def get_connected_plugs_recursive(node, plug, source, destination):
     """Recursively get all the nodes that are affected by the given plug."""
     all_plugs = set()
-    connected_plugs = get_connected_plugs(node, plug)
+    connected_plugs = get_connected_plugs(node, plug, source, destination)
     for connected_plug in connected_plugs:
         all_plugs.add(connected_plug)
         node_name, plug_name = connected_plug.split(".")
         node_type = cmds.nodeType(node_name)
 
         plugs_to_check = [plug_name]
+        print(plug_name)
         plugs_to_check.extend(cmds.affects(plug_name, type=node_type) or [])
 
         for plug_to_check in plugs_to_check:
             all_plugs = all_plugs | get_connected_plugs_recursive(
                 node_name,
                 plug_to_check,
+                source,
+                destination,
             )
 
     return all_plugs
 
 
-def get_affected_nodes(node, plug):
+def get_connected_nodes(node, plug, source, destination):
     """Return the nodes affected by the given plug."""
-    plugs = get_connected_plugs_recursive(node, plug)
+    plugs = get_connected_plugs_recursive(node, plug, source, destination)
     nodes = list(set([p.split(".")[0] for p in plugs]))
     return nodes
 
@@ -90,5 +93,5 @@ if __name__ == "__main__":
         "{}.translate".format(node2),
         "{}.translate".format(node3),
     )
-    nodes = get_affected_nodes(node1, "translate")
+    nodes = get_connected_nodes(node1, "translate")
     graph_nodes(nodes)

@@ -1,4 +1,4 @@
-//Maya Preference 2020 (Release 1)
+//Maya Preference 2022 (Release 1)
 //
 //
 
@@ -10,8 +10,40 @@ runTimeCommand
 	-category "Custom Scripts.mmtk.common.transform"
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import mmt.dag as dag\n\n\ndag.reset_transformation(cmds.ls(sl=True))")
+	-command ("import mmt.dag as dag\n\ndag.reset_rotation(cmds.ls(sl=True))")
+	reset_rotation;
+
+runTimeCommand
+	-annotation ""
+	-category "Custom Scripts.mmtk.common.transform"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import mmt.dag as dag\n\ndag.reset_transformation(cmds.ls(sl=True))")
 	reset_transformation;
+
+runTimeCommand
+	-annotation ""
+	-category "Custom Scripts.mmtk.common.transform"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import mmt.dag as dag\n\ndag.reset_translation(cmds.ls(sl=True))")
+	reset_translation;
+
+runTimeCommand
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import mmt.nodeeditor as nodeeditor\nreload(nodeeditor)\n\nnodeeditor.graph_hovered_attribute(source=True, destination=False)")
+	GraphAffectingNodes;
+
+runTimeCommand
+	-annotation ""
+	-category "Custom Scripts.mmtk.common.transform"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import mmt.dag as dag\n\ndag.reset_scale(cmds.ls(sl=True))")
+	reset_scale;
 
 runTimeCommand
 	-annotation ""
@@ -26,32 +58,8 @@ runTimeCommand
 	-category "Custom Scripts"
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import mmtk.rigging.nodeeditor as nodeeditor\nreload(nodeeditor)\n\nnodeeditor.graph_hovered_attribute()")
+	-command ("import mmt.nodeeditor as nodeeditor\nreload(nodeeditor)\n\nnodeeditor.graph_hovered_attribute(source=False, destination=True)")
 	GraphAffectedNodes;
-
-runTimeCommand
-	-annotation ""
-	-category "Custom Scripts.mmtk.common.transform"
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import mmt.dag as dag\n\n\ndag.reset_rotation(cmds.ls(sl=True))")
-	reset_rotation;
-
-runTimeCommand
-	-annotation ""
-	-category "Custom Scripts.mmtk.common.transform"
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import mmt.dag as dag\n\ndag.reset_translation(cmds.ls(sl=True))")
-	reset_translation;
-
-runTimeCommand
-	-annotation ""
-	-category "Custom Scripts.mmtk.common.transform"
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import mmt.dag as dag\n\ndag.reset_scale(cmds.ls(sl=True))")
-	reset_scale;
 
 //
 // The name commands referenced by the hotkeys
@@ -104,6 +112,12 @@ nameCommand
 	-command ("GraphAffectedNodes")
 	GraphAffectedNodesNameCommand;
 
+nameCommand
+	-annotation "GraphAffectingNodesNameCommand"
+	-sourceType "mel"
+	-command ("GraphAffectingNodes")
+	GraphAffectingNodesNameCommand;
+
 //
 // The user hotkeys
 //
@@ -114,33 +128,35 @@ hotkeySet -source "Maya_Default" -current hotkeys;
 //
 // The hotkey contexts and hotkeys
 //
-hotkey -keyShortcut "x" -alt -name ("GraphAffectedNodesNameCommand");
-hotkey -keyShortcut "g" -alt -name ("");
+hotkey -keyShortcut "q" -alt -releaseName ("");
 hotkey -keyShortcut "r" -alt -name ("reset_scaleNameCommand");
+hotkey -keyShortcut "w" -alt -name ("reset_translationNameCommand");
+hotkey -keyShortcut ">" -ctl -name ("GraphAffectedNodesNameCommand");
 hotkey -keyShortcut "a" -releaseName ("");
+hotkey -keyShortcut "n" -name ("NodeEditorWindowNameCommand");
+hotkey -keyShortcut "n" -releaseName ("");
 hotkey -keyShortcut "a" -name ("SelectToggleModeNameCommand");
 hotkey -keyShortcut "," -name ("Charcoal2NameCommand");
-hotkey -keyShortcut "n" -name ("NodeEditorWindowNameCommand");
-hotkey -keyShortcut "q" -alt -name ("reset_transformationNameCommand");
-hotkey -keyShortcut "n" -releaseName ("");
-hotkey -keyShortcut "q" -alt -releaseName ("");
 hotkey -keyShortcut "F8" -name ("");
+hotkey -keyShortcut "g" -alt -name ("");
 hotkey -keyShortcut "e" -alt -name ("reset_rotationNameCommand");
-hotkey -keyShortcut "w" -alt -name ("reset_translationNameCommand");
-hotkeyCtx -type "Editor" -addClient "polyTexturePlacementPanel";
-hotkeyCtx -type "Editor" -addClient "outlinerPanel";
-hotkeyCtx -type "Editor" -addClient "hyperGraphPanel";
-hotkeyCtx -type "Editor" -addClient "shapePanel";
-hotkeyCtx -type "Editor" -addClient "profilerPanel";
-hotkeyCtx -type "Editor" -addClient "graphEditor";
+hotkey -keyShortcut "x" -alt -name ("");
+hotkey -keyShortcut "<" -ctl -name ("GraphAffectingNodesNameCommand");
+hotkey -keyShortcut "q" -alt -name ("reset_transformationNameCommand");
 hotkeyCtx -type "Editor" -addClient "nodeEditorPanel";
-hotkeyCtx -type "Editor" -addClient "posePanel";
 hotkeyCtx -type "Editor" -addClient "timeEditorPanel";
+hotkeyCtx -type "Editor" -addClient "polyTexturePlacementPanel";
+hotkeyCtx -type "Editor" -addClient "profilerPanel";
+hotkeyCtx -type "Editor" -addClient "posePanel";
+hotkeyCtx -type "Editor" -addClient "graphEditor";
+hotkeyCtx -type "Editor" -addClient "shapePanel";
+hotkeyCtx -type "Editor" -addClient "hyperGraphPanel";
+hotkeyCtx -type "Editor" -addClient "outlinerPanel";
 hotkeyCtx -type "Editor" -addClient "hyperShadePanel";
-hotkeyCtx -type "Tool" -addClient "SymmetrizeUVBrush";
 hotkeyCtx -type "Tool" -addClient "texSculptCacheContext";
-hotkeyCtx -type "Tool" -addClient "xgmIGBrush";
-hotkeyCtx -type "Tool" -addClient "Unfold3DBrush";
 hotkeyCtx -type "Tool" -addClient "sculptMeshCache";
 hotkeyCtx -type "Tool" -addClient "polyCutUV";
+hotkeyCtx -type "Tool" -addClient "SymmetrizeUVBrush";
+hotkeyCtx -type "Tool" -addClient "Unfold3DBrush";
+hotkeyCtx -type "Tool" -addClient "xgmIGBrush";
 hotkeyCtx -type "Tool" -addClient "texCutContext";
