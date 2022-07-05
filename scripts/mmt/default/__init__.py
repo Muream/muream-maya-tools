@@ -15,8 +15,6 @@ def initialize():
 
 def init_now():
     sys.dont_write_bytecode = True
-    cmds.commandPort(n="localhost:7001", stp="mel", echoOutput=True)
-    init_cosmos()
 
 
 def init_deferred():
@@ -24,26 +22,6 @@ def init_deferred():
     init_viewport()
 
     logger.info("Muream Maya Tools initialized.")
-
-
-def init_cosmos():
-    if "cosmos" in sys.modules:
-        import cosmos
-
-        current_directory = os.path.dirname(__file__)
-
-        cosmos_actions_path = os.path.abspath(
-            os.path.join(current_directory, "cosmos-actions")
-        )
-
-        path_string = cosmos.prefs.getGenericSettings("scriptPath")
-        paths = path_string.split(";")
-
-        if cosmos_actions_path not in path_string:
-            paths.append(cosmos_actions_path)
-
-        path_string = ";".join(paths)
-        cosmos.prefs.writegenericSettings("scriptPath", path_string)
 
 
 def init_hotkeys():
