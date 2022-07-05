@@ -1,4 +1,5 @@
 import maya.cmds as cmds
+
 from .deformers import get_deformers_by_type
 
 
@@ -26,7 +27,7 @@ def get_binding_joints(mesh):
 
 def reset_translation(nodes):
     if not isinstance(nodes, list):
-        nodes = [list]
+        nodes = [nodes]
 
     for node in nodes:
         if not cmds.nodeType(node) in ["transform", "joint"]:
@@ -34,19 +35,15 @@ def reset_translation(nodes):
         for axis in "XYZ":
             attr_name = "{}.{}".format(node, "translate" + axis)
 
-            is_locked = cmds.getAttr(attr_name, lock=True)
-            is_connected = bool(
-                cmds.listConnections(attr_name, source=True, destination=False)
-            )
-            if is_locked or is_connected:
-                continue
-
-            cmds.setAttr(attr_name, 0)
+            try:
+                cmds.setAttr(attr_name, 0)
+            except RuntimeError as e:
+                pass
 
 
 def reset_rotation(nodes):
     if not isinstance(nodes, list):
-        nodes = [list]
+        nodes = [nodes]
 
     for node in nodes:
         if not cmds.nodeType(node) in ["transform", "joint"]:
@@ -54,19 +51,15 @@ def reset_rotation(nodes):
         for axis in "XYZ":
             attr_name = "{}.{}".format(node, "rotate" + axis)
 
-            is_locked = cmds.getAttr(attr_name, lock=True)
-            is_connected = bool(
-                cmds.listConnections(attr_name, source=True, destination=False)
-            )
-            if is_locked or is_connected:
-                continue
-
-            cmds.setAttr(attr_name, 0)
+            try:
+                cmds.setAttr(attr_name, 0)
+            except RuntimeError as e:
+                pass
 
 
 def reset_scale(nodes):
     if not isinstance(nodes, list):
-        nodes = [list]
+        nodes = [nodes]
 
     for node in nodes:
         if not cmds.nodeType(node) in ["transform", "joint"]:
@@ -74,14 +67,10 @@ def reset_scale(nodes):
         for axis in "XYZ":
             attr_name = "{}.{}".format(node, "scale" + axis)
 
-            is_locked = cmds.getAttr(attr_name, lock=True)
-            is_connected = bool(
-                cmds.listConnections(attr_name, source=True, destination=False)
-            )
-            if is_locked or is_connected:
-                continue
-
-            cmds.setAttr(attr_name, 1)
+            try:
+                cmds.setAttr(attr_name, 1)
+            except RuntimeError as e:
+                pass
 
 
 def reset_transformation(nodes):
